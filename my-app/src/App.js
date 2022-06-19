@@ -5,6 +5,7 @@ import axios from 'axios';
 import AllList from './component/AllList';
 // import LoadingSpinner from './component/LoadSpiner';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FavList from './component/FavList';
 
 // import { useSelector, useDispatch } from 'react-redux'
 
@@ -39,14 +40,14 @@ function App() {
   // console.log(apiData);
   return (
     <div className="App">
-      {/* {isLoading ? <LoadingSpinner /> : <AllList apiData={apiData}  /> } */}
-      <AllList />
+      {/* <AllList /> */}
       {/* <LoadingSpinner/> */}
-      {/* <BrowserRouter>
-        <Routes> */}
-          {/* <Route path="/" element={<AllList />} /> */}
-        {/* </Routes>
-      </BrowserRouter> */}
+      <BrowserRouter>
+        <Routes>  
+        <Route exact path="/" element={<AllList />} />  
+          <Route path="/fav" element={<FavList />} />  
+          </Routes>
+      </BrowserRouter>
     </div>
   );
 }

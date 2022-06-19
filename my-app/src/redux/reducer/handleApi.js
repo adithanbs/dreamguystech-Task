@@ -1,20 +1,32 @@
-const initialState = [
-    {adi:"dad"},{adi:"dad"}
-];
+import {ADDCART} from '../action/index'
 
-const handleApi = (state = initialState,action) => {
-    const product = action.payload;
+const initialState = {
+    apiValue:[]
+};
+
+const handleApi = (state = initialState,action) => {    
     switch (action.type) {
         case "ADDCART":
-            
-            state = product;
-            return state;
-            
-            break;
-    
+            // console.log("adddcart",{...state, apiValue:action.payload});
+        return {...state, apiValue:action.payload};
+        case "ADDFAV":    
+        const updateValue = {...state, apiValue:action.payload}
+        let finalVale = updateValue.apiValue;
+        // console.log(updateValue)
+        // console.log(finalVale)
+
+        const newList = [...state.apiValue];
+        const newState = newList.map((ele,index) => {
+          return  ele.id === finalVale ? {...ele,fav : true} : ele
+        });
+
+        console.log(newState);
+    return {...state,newState}
         default:
             break;
     }
+    // console.log("state",state);
+    return state 
 }
 
 export default handleApi;

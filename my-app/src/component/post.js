@@ -2,11 +2,15 @@
 
 import React,{useEffect, useState} from 'react';
 import LoadingSpinner from './LoadSpiner';
+import { useDispatch } from 'react-redux';
+import { addFav } from "../redux/action/index";
+import "./post.css"
+import { Link } from 'react-router-dom';
 
 const Posts = ({ posts,loading }) => {
 
     const [searchvalue, setSearchValue] = useState([])
-    
+    const dispatch = useDispatch()
     useEffect(() => {
         setSearchValue(posts)
     },[posts])
@@ -25,11 +29,8 @@ const Posts = ({ posts,loading }) => {
       }
 
       console.log(searchvalue);
-      const handleClick = (e) => {
-           let element = searchvalue.map((ele,i)=> (
-               ele.id === e.id ? {...e,fav:true} : e
-           ))
-           
+      const handleClick = (item) => {
+           dispatch(addFav(item.id));
           }
 
   if (loading) {
@@ -43,13 +44,21 @@ const Posts = ({ posts,loading }) => {
 
   return (
       <>
+      <div style = {{display:"flex",justifyContent:"flexEnd", height:"100px",
+    alignItems: "center"}} > 
+      <div>
     <input 
-    style = {{height:"38px",marginTop:"30px",marginBottom:"30px",marginLeft:"80%"}}
+    style = {{height:"50px",width:"220px"}}
     class="search_btn" 
     placeholder="Search Employee ..." 
     type = "search"
     onChange = {handleChangre}
     />
+    </div>
+    <div className = "fav">
+       <Link to = "/fav" style = {{fontSize:"20px",margin:"0",textDecoration:"none",color:"inherit"}}>Favourite List</Link>
+    </div>
+    </div>
     <table class="table">
     <thead>
       <tr>
@@ -68,10 +77,7 @@ const Posts = ({ posts,loading }) => {
         <td>{ele.email}</td>
         <td>{ele.first_name}</td>
         <td>{ele.last_name}</td>
-        <button onClick = {() => handleClick(ele)}></button>
-        <div class="form-check" >
-        </div>
-  
+        <td><input onClick = {() => handleClick(ele)} type = "checkbox" /></td>
   
    </tr>  
         ))

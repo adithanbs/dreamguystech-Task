@@ -1,0 +1,15 @@
+.fav{
+height:50px;
+width: 220px;
+border:1px solid black;
+margin-left: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.fav:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+/* <div style = {{height:"50px",width:"220px",border:"1px solid black",marginLeft:"10px",display:"flex",justifyContent:"center",alignItems:"center"}} > */
