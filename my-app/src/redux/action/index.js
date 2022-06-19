@@ -7,7 +7,6 @@
  }
 
  export const addFav = (product) => {
-  console.log("eeeee",product);
 
     return {
       type: "ADDFAV",

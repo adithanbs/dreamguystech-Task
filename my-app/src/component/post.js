@@ -77,7 +77,7 @@ const Posts = ({ posts,loading }) => {
         <td>{ele.email}</td>
         <td>{ele.first_name}</td>
         <td>{ele.last_name}</td>
-        <td><input onClick = {() => handleClick(ele)} type = "checkbox" /></td>
+        <td><input onClick = {() => handleClick(ele)} type = "checkbox" checked = {ele.fav}/></td>
   
    </tr>  
         ))

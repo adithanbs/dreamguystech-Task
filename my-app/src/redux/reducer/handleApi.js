@@ -12,15 +12,12 @@ const handleApi = (state = initialState,action) => {
         case "ADDFAV":    
         const updateValue = {...state, apiValue:action.payload}
         let finalVale = updateValue.apiValue;
-        // console.log(updateValue)
-        // console.log(finalVale)
-
         const newList = [...state.apiValue];
         const newState = newList.map((ele,index) => {
           return  ele.id === finalVale ? {...ele,fav : true} : ele
         });
 
-        console.log(newState);
+        // console.log(newState);
     return {...state,newState}
         default:
             break;

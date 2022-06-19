@@ -6,15 +6,14 @@ import { addCart } from "../redux/action/index";
 import { useDispatch,useSelector } from "react-redux";
 
 const AllList = () => {
-    // const [posts,setPost] = useState([]);
     const [loading, setIsLoading] = useState(false);
-    // const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(2);
-  const dispatch = useDispatch();
-  const posts = useSelector((state) =>state.handleApi.apiValue)
-  console.log("selection",posts);
-    React.useEffect (() => {
+    const dispatch = useDispatch();
+    const posts = useSelector((state) =>state.handleApi.apiValue)
+  // console.log("selection",posts);
+    
+  React.useEffect (() => {
       setIsLoading(true);
     axios.get(' https://reqres.in/api/users?page=${page}&per_page=${countPerPage}&delay=1`').then((response) => {
     let apiData = response.data.data;
